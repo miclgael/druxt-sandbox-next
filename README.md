@@ -50,7 +50,7 @@ In my experience installing Drupal and setting a custom hostname, subfolder and 
 
 ![DruxtSite debug component producing ECONNREFUSED error](.github/documentation/screenshhots/2022-03-26-09-14-58.png)
 
-This is not something you can resolve easily by searching, so I asked for help in the `#druxt-site` channel on the official Druxt discord server. [Permalink &rarr;](https://discord.com/channels/753866667590680587/849520152102043649/954666298212757534)
+This is not something I could resolve easily by searching, so I asked for help in the `#druxt-site` channel on the official Druxt discord server. [Permalink &rarr;](https://discord.com/channels/753866667590680587/849520152102043649/954666298212757534)
 
 TL;DR - when attempting to [change ports from the defaults](https://ddev.readthedocs.io/en/stable/users/extend/config_yaml/#ddevconfigyaml-options) (in `.ddev/config.yaml`) - the `npm run dev` command will fail.
 
