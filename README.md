@@ -1,74 +1,62 @@
-# DruxtSite quickstart - Drupal
+# Druxt and Druxt-site for Wordpress developers
 
-> One click, Fully Decoupled Drupal Site starter-kit with Druxt.
+> A druxt quickstart site with DDEV, (ejected from gitpod because reasons).
 
-DruxtSite connects Drupal to Nuxt via JSON:API to provide a framework for building a Fully Decoupled site.
+The original documentation and license is preserved below
 
-This repostory provides a quickstart installation of:
-- Drupal 9
-- Nuxt 2
-- DruxtSite
+[Original Druxt.js MIT license &rarr;](https://github.com/druxt/druxt.js/blob/develop/LICENSE)<br>
+[Original Quickstart Druxt Site repo &rarr;](https://github.com/druxt/quickstart-druxt-site)<br>
+[Local Druxt.js license &rarr;](https://github.com/miclgael/druxt-sandbox-next/blob/mg-tweaks/LICENSE-druxt)
 
+---
 
-## Quickstart
+## Table of Contents
 
-Try it before you fork it:
+- [Druxt and Druxt-site for Wordpress developers](#druxt-and-druxt-site-for-wordpress-developers)
+  - [Table of Contents](#table-of-contents)
+  - [💧 Background](#-background)
+  - [📚 Notes](#-notes)
+    - [1. Don't use MAMP/Pro (for now)](#1-dont-use-mamppro-for-now)
+    - [2. `druxt-site` doesn't work with subfolders or obscure ports](#2-druxt-site-doesnt-work-with-subfolders-or-obscure-ports)
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/druxt/quickstart-druxt-site)
+## 💧 Background
 
+I am familiar with Nuxt, but I am not a Drupal developer. My background is with Wordpress, so learning Druxt for me comes with an additional learning curve. This repo is for my own self-directed learning.
 
-## Getting started
+My aim is to use this project to inform my approach in my work and where possible help to improve Druxt documentation.
 
-1. Click the **Use this template** button in GitHub and follow the on-screen instructions to **Create a new repository**.
+Example components expect the `/jsonapi` endpoint to return content from Drupal's _Umami_ demo site.
 
-2. Once the repository has been generated, open it in Gitpod by appending `https://gitpod.io#` to the GitHub url.
+## 📚 Notes
 
-   Example: `https://gitpod.io#github.com/druxt/quickstart-druxt-site`
+### 1. Don't use MAMP/Pro (for now)
 
-   _Note:_ If this is your first time using Gitpod, you can signup for a free plan with your Github account.
+Either use the 1-click Gitpod solution, or if you prefer to work locally, install Docker, and ddev and use those.
 
-3. Wait for your codebase to build.
+Remember to:
 
-   _Note:_ To speed up this step, enable Prebuilds by follow the instructions @ https://www.gitpod.io/docs/prebuilds#enable-prebuilt-workspaces
+- Run `mkcert -install`
+- Stop and shut-down MAMP
+- Stop other containers running on port 80/443
+  - Check for any apps running on ports with e.g. `lsof -nP -iTCP -sTCP:LISTEN | grep 443`
 
+---
 
-## How to use it
+### 2. `druxt-site` doesn't work with subfolders or obscure ports
 
-Your environment contains a pre-install, pre-configured and running instance of Drupal and Nuxt, with the DruxtSite module enabled.
+So, why not use MAMP Pro?
 
-You can access the services in your browser, via the **Remote Explorer** extension, or via the URL pattern: `https://[PORT]-[GITPOD_ID].[GITPOD_SERVER].gitpod.io`
+In my experience installing Drupal and setting a custom hostname, subfolder and port resulted in errors when running `npm run dev` - (either 404 and a crash or a ECONNREFUSED in the `<DruxtDebug />` component on the front-end).
 
+![DruxtSite debug component producing ECONNREFUSED error](.github/documentation/screenshhots/2022-03-26-09-14-58.png)
 
-## Services
+This is not something you can resolve easily by searching, so I asked for help in the `#druxt-site` channel on the official Druxt discord server. [Permalink &rarr;](https://discord.com/channels/753866667590680587/849520152102043649/954666298212757534)
 
-| Port | Service |
-| -- | -- |
-| `3000` | Nuxt.js |
-| `3003` | Storybook |
-| `8080` | Drupal |
+TL;DR - when attempting to [change ports from the defaults](https://ddev.readthedocs.io/en/stable/users/extend/config_yaml/#ddevconfigyaml-options) (in `.ddev/config.yaml`) - the `npm run dev` command will fail.
 
+```
+router_http_port: "80"
+router_https_port: "443"
+```
 
-## Tools
-
-### DDEV
-
-> DDEV is an open source tool that makes it dead simple to get local PHP development environments up and running within minutes. 
-
-DDEV is used to manage the Drupal instance, and provides a CLI that can be used to run common drupal tasks, including `ddev drush`.
-
-These commands should be run from within the `/drupal` folder.
-
-Refer to the documentation for more details: https://ddev.readthedocs.io
-
-### @nuxtjs/storybook
-
-> Storybook integration with NuxtJS .
-
-Druxt integrates with the Nuxt Storybook module to provide zero-configuration, auto-discovery stories with access to live data from your Drupal backend.
-
-To start Storybook, navigate to the `nuxt` directory and run `npx nuxt storybook`.
-
-
-## License
-
-[MIT](https://github.com/druxt/druxt.js/blob/develop/LICENSE)
+---
