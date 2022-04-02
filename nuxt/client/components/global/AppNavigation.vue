@@ -3,7 +3,7 @@
     <nav class="flex-1">
       <ul role="list" class="menu menu-horizontal p-0">
         <li role="listitem">
-          <nuxt-link to="/home">Home</nuxt-link>
+          <nuxt-link to="/">Home</nuxt-link>
         </li>
         <li role="listitem">
           <nuxt-link to="/about">About</nuxt-link>

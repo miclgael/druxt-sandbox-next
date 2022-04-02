@@ -70,6 +70,7 @@ export default {
       vanityPath(routes, 'protected/dashboard', '/dashboard', true)
       vanityPath(routes, 'auth/login', '/login', true)
       vanityPath(routes, 'auth/register', '/register', true)
+      vanityPath(routes, 'home', '/', true)
     },
     // @DRUXT_NOTE router middleware can break druxt-site,
     // @TODO find a work-around for dumping users
