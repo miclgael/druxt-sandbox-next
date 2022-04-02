@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "csstools.postcss",
+    "octref.vetur",
+    "bradlc.vscode-tailwindcss",
+    "sdras.vue-vscode-snippets",
+    "dbaeumer.vscode-eslint"
+  ]
+}
