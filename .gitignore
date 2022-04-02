@@ -104,6 +104,7 @@ dist
 .vscode/*
 # VSCode Xdebug settings
 !.vscode/launch.json
+!.vscode/extensions.json
 
 # Intellij idea
 *.iml
