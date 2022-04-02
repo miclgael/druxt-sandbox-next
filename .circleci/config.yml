@@ -1,0 +1,43 @@
+version: 2
+
+jobs:
+  nuxt:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+
+      - run:
+          name: Change Directory
+          command: cd nuxt
+
+      - restore_cache:
+          keys:
+            - node-v1-{{ checksum "package-lock.json" }}
+
+      - run:
+          name: Install dependencies
+          command: npm ci
+
+      - save_cache:
+          key: node-v1-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/.npm
+
+      - run:
+          name: Run linter
+          command: npm run lint
+
+      - run:
+          name: Run coverage with threshold
+          command: npm run test:coverage
+
+workflows:
+  version: 2
+  ci:
+    jobs:
+      - nuxt:
+          filters:
+            branches:
+              only:
+                - main
