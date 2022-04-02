@@ -1,0 +1,3 @@
+node_modules
+db/*.json
+!db/user.example.json
